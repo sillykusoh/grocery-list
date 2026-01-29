@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Grocery List</title>
+</head>
+<body>
+    <h1>My Grocery List</h1>
+
+    <form method="POST">
+        <input type="text" name="item" placeholder="Add grocery item" required>
+        <button type="submit">Add</button>
+    </form>
+
+    <ul>
+        {% for item in groceries %}
+        <li>
+            {{ item }}
+            <form method="POST" action="/delete" style="display: inline;">
+                <input type="hidden" name="item" value="{{ item }}">
+                <button type="submit">Delete</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+```
+
+---
+
+**Create a NEW file called `requirements.txt` and copy this:**
+```
+Flask==3.0.0
+gunicorn==21.2.0
